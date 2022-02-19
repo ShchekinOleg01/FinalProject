@@ -64,7 +64,30 @@ public class BookingDaoImpl implements BookingDao {
     }
     System.out.println("Запись в файл - Booking.txt, прошла успешно!!!");
   }
+
+  @Override
+  public void loadData() throws IOException {
+    FileInputStream fis = new FileInputStream("Booking.txt");
+      ObjectInputStream oin = new ObjectInputStream(fis);
+      List<Flight> list = fligthtList.getAllFlight();
+
+      while (true) {
+        try {
+          list.add((Flight) oin.readObject());
+        } catch (EOFException e) {
+          System.out.println("Нет данных");
+          break;
+        } catch (StreamCorruptedException | ClassNotFoundException e) {
+          e.printStackTrace();
+          System.out.println("Нет данных");
+        }
+      }
+      System.out.println("Считывание данных прошло успешно!!!");
+      System.out.println(fligthtList.getAllFlight());
+      fis.close();
+    }
   }
+
 
 
 

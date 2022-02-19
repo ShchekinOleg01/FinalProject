@@ -11,6 +11,6 @@ public interface BookingDao {
     public void bookingFlight(int id, String location, String date, int tickets);
 
     public void writeFile() throws FileNotFoundException;
-
+    public void loadData() throws IOException ;
 
 }

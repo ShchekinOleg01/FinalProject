@@ -12,6 +12,7 @@ import service.BookingService;
 import service.FlightServise;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -67,7 +68,7 @@ public class Main {
 
         }
         if (num == 4) {
-          System.out.println("NUMBER  - " + 4);
+         bookingControler.loadData();
         }
         if (num == 5) {
           System.out.println("NUMBER  - " + 5);
@@ -82,7 +83,7 @@ public class Main {
       } catch (NumberFormatException e) {
         System.err.println("\n" + "Wrong string format!");
         System.out.println(num + " please, try again only numbers.");
-      } catch (FileNotFoundException e) {
+      } catch (IOException e) {
         e.printStackTrace();
       }
     }

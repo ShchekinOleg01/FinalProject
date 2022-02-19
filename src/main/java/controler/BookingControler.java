@@ -4,6 +4,7 @@ import entity.Booking;
 import service.BookingService;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.List;
 
 public class BookingControler {
@@ -18,5 +19,8 @@ public class BookingControler {
   }
   public void writeFile() throws FileNotFoundException {
     bookingService.writeFile();
+  }
+  public void loadData() throws IOException {
+    bookingService.loadData();
   }
 }
