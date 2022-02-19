@@ -87,4 +87,9 @@ public class FlightDaoImpl implements FlightDao {
   public void close() {
 
   }
+
+  @Override
+  public void write() {
+
+  }
 }

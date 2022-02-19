@@ -11,6 +11,7 @@ import entity.*;
 import service.BookingService;
 import service.FlightServise;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -24,7 +25,7 @@ public class Main {
     FlightControler flightControler = new FlightControler(flightServise);
 
 
-    BookingDao bookingDao = DaoFactory.createBookingDao();
+    BookingDaoImpl bookingDao = new BookingDaoImpl();
     BookingService bookingService = new BookingService(bookingDao);
     BookingControler bookingControler = new BookingControler(bookingService);
 
@@ -51,18 +52,18 @@ public class Main {
           flightControler.getFlightByID(num);
         }
         if (num == 3) {
-          int Tickets =0;
+          int tickets =0;
           System.out.println("Введите место назначения, дата, количество человек (сколько необходимо купить билетов).");
           System.out.println(" 1- Место назначения?");
-          String Location = in.nextLine();
-          System.out.println(" 2- Дата");
-          String Date = in.nextLine();
-          System.out.println(" 3-  Количество билетов");
-          Tickets = Integer.parseInt(in.nextLine());
+          String location = in.nextLine();
+          System.out.println(" 2- Дата?");
+          String date = in.nextLine();
+          System.out.println(" 3-  Количество необходимых билетов?");
+          tickets = Integer.parseInt(in.nextLine());
           int countBooking = 0;
           int id = countBooking;
-         // bookingControler.getAllBookings();
-          bookingControler.bookingFlight(id,Location, Date,Tickets);
+          bookingControler.bookingFlight(id, location,date,tickets);
+          bookingControler.writeFile();
 
         }
         if (num == 4) {
@@ -81,6 +82,8 @@ public class Main {
       } catch (NumberFormatException e) {
         System.err.println("\n" + "Wrong string format!");
         System.out.println(num + " please, try again only numbers.");
+      } catch (FileNotFoundException e) {
+        e.printStackTrace();
       }
     }
   }

@@ -4,29 +4,21 @@ import dao.BookingDao;
 import dao.daoImpl.BookingDaoImpl;
 import entity.Booking;
 
+import java.io.FileNotFoundException;
 import java.util.List;
 
 public class BookingService {
-  private BookingDao bookingDao;
-  public BookingService(BookingDao bookingDao) {
+
+  private final BookingDao bookingDao;
+
+  public BookingService(BookingDaoImpl bookingDao) {
     this.bookingDao = bookingDao;
   }
-  public void bookingFlight(int id, String location, String date, int tickets) {
-    System.out.println("BookingService RUN");
-    bookingDao.hello();
 
+  public void bookingFlight(int id, String location, String date, int tickets){
+    bookingDao.bookingFlight(id, location, date, tickets);
   }
-
-  public List<Booking> getAllBookings() {
-    return bookingDao.getAllBookings();
-  }
-  public void addBooking(int idFlight, String name, String surname){
-    bookingDao.addBooking(idFlight, name, surname);
-  }
-  public void deleteBooking(int i){
-    bookingDao.deleteBooking(i);
-  }
-  public List<Booking> getBookingByUser(List<Booking> bookings, String name, String surname){
-    return bookingDao.getBookingsByUser(bookings, name, surname);
+  public void writeFile() throws FileNotFoundException {
+    bookingDao.writeFile();
   }
 }
