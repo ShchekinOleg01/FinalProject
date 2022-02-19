@@ -11,5 +11,21 @@ public class FlightServise {
   public FlightServise(FlightDao flightDao) {
     this.flightDao = flightDao;
   }
-  public List<Flight> getAllFlight(){return flightDao.getAllFlights();}
+
+  public List<Flight> getAllFlights() {return flightDao.getAllFlights();};
+
+  public void getScoreboardFlight(){
+    flightDao.getScoreboardFlight();
+  }
+  public void getScoreboard (){
+    flightDao.getScoreboard();
+  };
+
+  public Flight getFlightByID(int IDFlight) {
+    return flightDao.getFlightByID(IDFlight);
+  }
+
+
+
+
 }

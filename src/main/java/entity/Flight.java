@@ -3,27 +3,57 @@ package entity;
 import java.util.Objects;
 
 public class Flight extends AbstractEntity {
-  long departureTime;
-  String destination;
-  int numberFreeSeats;
+  private String terminal;
+  private String date;
+  private String LocalTime;
+  private String destination;
+  private String airline;
+  private String flight;
+  private int freeSeat;
 
-  public Flight(long id) {
-    super(id);
-  }
 
-  public Flight(long id, long departureTime, String destination, int numberFreeSeats) {
+  public Flight(long id){
     super(id);
-    this.departureTime = departureTime;
+  };
+
+  public Flight( long id,String terminal, String date, String localTime, String destination, String airline, String flight) {
+    super(id);
+    this.terminal = terminal;
+    this.date = date;
+    LocalTime = localTime;
     this.destination = destination;
-    this.numberFreeSeats = numberFreeSeats;
+    this.airline = airline;
+    this.flight = flight;
   }
 
-  public long getDepartureTime() {
-    return departureTime;
+  public Flight(long id, String terminal, String date, String localTime, String destination, String airline, String flight, int freeSeat) {
+    this( id, terminal, date, localTime, destination, airline, flight);
+    this.freeSeat = freeSeat;
   }
 
-  public void setDepartureTime(long departureTime) {
-    this.departureTime = departureTime;
+
+  public String getTerminal() {
+    return terminal;
+  }
+
+  public void setTerminal(String terminal) {
+    this.terminal = terminal;
+  }
+
+  public String getDate() {
+    return date;
+  }
+
+  public void setDate(String date) {
+    this.date = date;
+  }
+
+  public String getLocalTime() {
+    return LocalTime;
+  }
+
+  public void setLocalTime(String localTime) {
+    LocalTime = localTime;
   }
 
   public String getDestination() {
@@ -34,37 +64,43 @@ public class Flight extends AbstractEntity {
     this.destination = destination;
   }
 
-  public int getNumberFreeSeats() {
-    return numberFreeSeats;
+  public String getAirline() {
+    return airline;
   }
 
-  public void setNumberFreeSeats(int numberFreeSeats) {
-    this.numberFreeSeats = numberFreeSeats;
+  public void setAirline(String airline) {
+    this.airline = airline;
   }
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (!(o instanceof Flight)) return false;
-    Flight flight = (Flight) o;
-    return getDepartureTime() == flight.getDepartureTime() &&
-      getNumberFreeSeats() == flight.getNumberFreeSeats() &&
-      Objects.equals(getDestination(), flight.getDestination());
+  public String getFlight() {
+    return flight;
   }
 
-  @Override
-  public int hashCode() {
+  public void setFlight(String flight) {
+    this.flight = flight;
+  }
 
-    return Objects.hash(getDepartureTime(), getDestination(), getNumberFreeSeats());
+  public int getFreeSeat() {
+    return freeSeat;
+  }
+
+  public void setFreeSeat(int freeSeat) {
+    this.freeSeat = freeSeat;
   }
 
   @Override
   public String toString() {
     return "Flight{" +
-      "departureTime=" + departureTime +
-      ", destination='" + destination + '\'' +
-      ", numberFreeSeats=" + numberFreeSeats +
-      ", id=" + id +
-      '}';
+            "terminal='" + terminal + '\'' +
+            ", date='" + date + '\'' +
+            ", LocalTime='" + LocalTime + '\'' +
+            ", destination='" + destination + '\'' +
+            ", airline='" + airline + '\'' +
+            ", flight='" + flight + '\'' +
+            ", freeSeat=" + freeSeat +
+            '}';
   }
 }
+
+
+

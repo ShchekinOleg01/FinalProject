@@ -3,68 +3,50 @@ package entity;
 import java.util.Objects;
 
 public class Booking extends AbstractEntity {
-  int idFlight;
-  String userName;
-  String userSurname;
+private String locate;
+private String date;
+private int tickets;
+public static int countBooking = 0;
 
-  public Booking(long id) {
+
+  public Booking(long id, String locate, String date, int tickets) {
     super(id);
+    countBooking++;
+    this.locate = locate;
+    this.date = date;
+    this.tickets = tickets;
   }
 
-  public Booking(long id, int idFlight, String userName, String userSurname) {
-    super(id);
-    this.idFlight = idFlight;
-    this.userName = userName;
-    this.userSurname = userSurname;
+  public String getLocate() {
+    return locate;
   }
 
-  public int getIdFlight() {
-    return idFlight;
+  public void setLocate(String locate) {
+    this.locate = locate;
   }
 
-  public void setIdFlight(int idFlight) {
-    this.idFlight = idFlight;
+  public String getDate() {
+    return date;
   }
 
-  public String getUserName() {
-    return userName;
+  public void setDate(String date) {
+    this.date = date;
   }
 
-  public void setUserName(String userName) {
-    this.userName = userName;
+  public int getTickets() {
+    return tickets;
   }
 
-  public String getUserSurname() {
-    return userSurname;
-  }
-
-  public void setUserSurname(String userSurname) {
-    this.userSurname = userSurname;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (!(o instanceof Booking)) return false;
-    Booking booking = (Booking) o;
-    return getIdFlight() == booking.getIdFlight() &&
-      Objects.equals(getUserName(), booking.getUserName()) &&
-      Objects.equals(getUserSurname(), booking.getUserSurname());
-  }
-
-  @Override
-  public int hashCode() {
-
-    return Objects.hash(getIdFlight(), getUserName(), getUserSurname());
+  public void setTickets(int tickets) {
+    this.tickets = tickets;
   }
 
   @Override
   public String toString() {
     return "Booking{" +
-      "idFlight=" + idFlight +
-      ", userName='" + userName + '\'' +
-      ", userSurname='" + userSurname + '\'' +
-      ", id=" + id +
-      '}';
+            "locate='" + locate + '\'' +
+            ", date='" + date + '\'' +
+            ", tickets=" + tickets +
+            '}';
   }
 }

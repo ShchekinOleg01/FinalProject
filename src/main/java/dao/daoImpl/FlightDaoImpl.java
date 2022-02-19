@@ -1,19 +1,46 @@
 package dao.daoImpl;
 
 import dao.FlightDao;
+import entity.CADFrame;
 import entity.Flight;
+import entity.FligthtList;
+import entity.Scoreboard;
+
 
 import java.util.List;
+import java.util.Map;
 
 public class FlightDaoImpl implements FlightDao {
+  FligthtList fligthtList = new FligthtList();
+  Scoreboard scoreboard = new Scoreboard();
+  CADFrame cadFrame = new CADFrame();
+  List<Flight> flightList = fligthtList.getAllFlight();
+
+
 
   @Override
   public List<Flight> getAllFlights() {
-    return null;
+    return flightList;
+  }
+
+
+  public void getScoreboardFlight() {
+    fligthtList.cadList();
   }
 
   @Override
-  public Flight getFlightByIndex(int i) {
+  public void getScoreboard() {
+  scoreboard.cadTabloList();
+  }
+
+  @Override
+  public Flight getFlightByID(int IDFlight) {
+    if (IDFlight >= flightList.size()){
+      System.out.println("Нет такого индекса семьи : " + IDFlight + ", " + "null");
+
+    }
+    cadFrame.getOne(IDFlight);
+
     return null;
   }
 
@@ -29,7 +56,6 @@ public class FlightDaoImpl implements FlightDao {
 
   @Override
   public void saveFlight(Flight family) {
-
   }
 
   @Override
