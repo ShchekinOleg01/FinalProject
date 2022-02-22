@@ -1,5 +1,8 @@
 package entity;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class CADFrame {
     FligthtList fligthtList = new FligthtList();
 
@@ -18,5 +21,23 @@ public class CADFrame {
                    " ");
 
        System.out.println("----------------------------------------------------------------------------------------");
+    }
+    public void getSearchFlight(List<Flight> flightList){
+        System.out.println("        ***         Список рейсов по выбранному  направлению      ***    ");
+        System.out.println("-----------------------------------------------------------------------------------------");
+        System.out.println("| №  |    Дата    |  Время  | Место назначения |   Авиалинии  |  Рейс  | Свободных мест |");
+        System.out.println("|---------------------------------------------------------------------------------------|");
+        flightList.stream().forEach(print -> {
+
+            System.out.println("| "+(print.getId()< 10 ? (print.getId() + " ") : print.getId())+" | " + print.getDate()
+                    + " |  " + print.getLocalTime()+"  | "
+                    + print.getDestination() + " | "
+                    + print.getAirline() + " | "
+                    + print.getFlight() + " |  " +
+                    "     " +print.getFreeSeat() + "      |  " +
+                    " ");
+
+            System.out.println("-----------------------------------------------------------------------------------------");
+        });
     }
 }

@@ -11,13 +11,8 @@ import entity.*;
 import service.BookingService;
 import service.FlightServise;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
-
-import static entity.Booking.countBooking;
 
 public class Main {
   public static void main(String[] args) {
@@ -25,23 +20,15 @@ public class Main {
     FlightServise flightServise = new FlightServise(flightDAO);
     FlightControler flightControler = new FlightControler(flightServise);
 
-
     BookingDaoImpl bookingDao = new BookingDaoImpl();
     BookingService bookingService = new BookingService(bookingDao);
     BookingControler bookingControler = new BookingControler(bookingService);
 
-
     Scanner in = new Scanner(System.in);
-    System.out.print("Input name: ");
-    String name = in.nextLine();
-    System.out.println("Hello my friend " + name + " please choose your number");
-
     while (true) {
       flightControler.getScoreboard();
       System.out.println("Please enter number only");
       int num = 0;
-
-
       try {
         num = Integer.parseInt(in.nextLine());
         if (num == 1) {
@@ -64,20 +51,24 @@ public class Main {
           int countBooking = 0;
           int id = countBooking;
           bookingControler.bookingFlight(id, location,date,tickets);
-          bookingControler.writeFile();
-
         }
         if (num == 4) {
-         bookingControler.loadData();
+         bookingControler.canceled();
         }
         if (num == 5) {
-          System.out.println("NUMBER  - " + 5);
+          bookingControler.showFlight();
         }
         if (num == 6) {
           return;
         }
+        if (num == 7) {
+          flightControler.loadData();
+        }
+        if (num == 8) {
+          flightControler.writeFile();
+        }
        if (num > flightControler.getAllFlights().size()) {
-         System.out.println("Введите число меньше - " +flightControler.getAllFlights().size());
+         System.out.println("Введите число меньше - " + flightControler.getAllFlights().size());
         }
 
       } catch (NumberFormatException e) {

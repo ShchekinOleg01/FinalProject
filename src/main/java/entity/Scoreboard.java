@@ -11,7 +11,6 @@ public class Scoreboard {
     ScoreboardItem tabloList_5 = new ScoreboardItem("Мои рейсы                    ");
     ScoreboardItem tabloList_6 = new ScoreboardItem("Выход                        ");
 
-
     public Map<Integer, ScoreboardItem> getTabloList(){
         Map<Integer, ScoreboardItem> tabloList = new HashMap<>();
         tabloList.put(1, tabloList_1);
@@ -22,6 +21,7 @@ public class Scoreboard {
         tabloList.put(6, tabloList_6);
         return tabloList;
     }
+
     public void cadTabloList(){
         Scoreboard tabloList = new Scoreboard();
         Map<Integer, ScoreboardItem> getTabloList = tabloList.getTabloList();
@@ -36,7 +36,5 @@ public class Scoreboard {
             System.out.println("| "+key+" | " + value.getContent() +"    |");
         }    System.out.println("---------------------------------------");
     }
-
-
 
 }
